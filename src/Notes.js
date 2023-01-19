@@ -8,6 +8,7 @@ const Notes = () => {
     client.fetch(`*[_type == 'notes']`).then((data) => {
       console.log(data);
     });
+    console.log(process.env.REACT_APP_SANITY_PROJECT_ID);
   }, []);
 
   return (
