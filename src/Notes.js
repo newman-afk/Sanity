@@ -2,28 +2,26 @@ import React, { useEffect, useState } from "react";
 import { client } from "./client";
 
 const Notes = () => {
-  // const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([]);
 
-  // useEffect(() => {
-  //   client.fetch(`*[_type == 'notes']`).then((data) => {
-  //     console.log(data);
-  //   });
-  //   console.log(process.env.REACT_APP_SANITY_PROJECT_ID);
-  // }, []);
+  useEffect(() => {
+    client.fetch(`*[_type == 'netlify']`).then((data) => {
+      console.log(data);
+      setNotes(data);
+    });
+  }, []);
 
   return (
     <>
       <header>Notes</header>
-      {/* <div>
-        {notes.map((article) => {
-          return (
-            <>
-              <title>{article.title}</title>
-              <p>{article.body}</p>
-            </>
-          );
-        })}
-      </div> */}
+      {notes.map((article) => {
+        return (
+          <article key={article._id}>
+            {article.title}
+            <p>{article.content}</p>
+          </article>
+        );
+      })}
     </>
   );
 };
