@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import { client } from "./client";
 
 const Notes = () => {
-  const [notes, setNotes] = useState([]);
+  // const [notes, setNotes] = useState([]);
 
-  useEffect(() => {
-    client.fetch(`*[_type == 'notes']`).then((data) => {
-      console.log(data);
-    });
-    console.log(process.env.REACT_APP_SANITY_PROJECT_ID);
-  }, []);
+  // useEffect(() => {
+  //   client.fetch(`*[_type == 'notes']`).then((data) => {
+  //     console.log(data);
+  //   });
+  //   console.log(process.env.REACT_APP_SANITY_PROJECT_ID);
+  // }, []);
 
   return (
     <>
       <header>Notes</header>
-      <div>
+      {/* <div>
         {notes.map((article) => {
           return (
             <>
@@ -23,7 +23,7 @@ const Notes = () => {
             </>
           );
         })}
-      </div>
+      </div> */}
     </>
   );
 };
