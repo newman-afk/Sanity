@@ -5,7 +5,7 @@ const Notes = () => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    client.fetch(`*[_type == 'Notes']`).then((data) => {
+    client.fetch(`*[_type == 'notes']`).then((data) => {
       console.log(data);
     });
   }, []);
