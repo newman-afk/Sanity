@@ -69,14 +69,14 @@ const Notes = () => {
             })}
           </div>
         </div>
-        <div className="col">
+        <div className="col my-5">
           <h1 className="mb-5">{content.title}</h1>
           <p className="time">
             {content._createdAt && "CreatedAt: "}
             {content._createdAt}
           </p>
           <p className="time">
-            {content._UpdatedAt && "UpdatedAt: "}
+            {content._updatedAt && "UpdatedAt: "}
             {content._updatedAt}
           </p>
           <p>{content.content}</p>
