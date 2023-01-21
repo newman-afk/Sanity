@@ -6,4 +6,5 @@ export const topic = [
   "Html",
   "Netlify",
   "Sanity",
+  "essay",
 ];
