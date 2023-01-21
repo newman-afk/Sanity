@@ -70,12 +70,14 @@ const Notes = () => {
         <div className="col mt-1 mb-5">
           <h1 className="mb-5">{content.title}</h1>
           <p className="time">
-            {content._createdAt && "CreatedAt: "}
-            {content._createdAt}
+            {content._createdAt &&
+              "CreatedAt: " +
+                content._createdAt.replace("T", " ").replace("Z", "")}
           </p>
           <p className="time">
-            {content._updatedAt && "UpdatedAt: "}
-            {content._updatedAt}
+            {content._updatedAt &&
+              "UpdatedAt: " +
+                content._updatedAt.replace("T", " ").replace("Z", "")}
           </p>
           <p>{content.content}</p>
           <a target="_blank" rel="noreferrer" href={`${content.link}`}>
