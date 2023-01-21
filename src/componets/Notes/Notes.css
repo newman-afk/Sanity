@@ -5,6 +5,7 @@
   margin: 0.5rem 0 0.7rem 0;
   color: #333;
   box-shadow: 0 0 5px 5px rgba(99, 197, 18, 0.05);
+  display: block;
 }
 .mylink:hover {
   color: rgb(104, 228, 22);

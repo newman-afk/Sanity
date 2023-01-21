@@ -5,19 +5,12 @@ import { topic } from "../../data";
 import "./Notes.css";
 const Notes = () => {
   const [content, setContent] = useState([]);
-  const [react, setReact] = useState([]);
-  const [css, setCss] = useState([]);
-  const [scss, setScss] = useState([]);
-  const [javascript, setJavascript] = useState([]);
-  const [netlify, setNetlify] = useState([]);
-  const [html, setHtml] = useState([]);
-  const [sanity, setSanity] = useState([]);
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    topic.map((item) => {
-      client.fetch(`*[_type == '${item.toLowerCase()}']`).then((data) => {
-        eval(`set${item}`)(data);
-      });
+    client.fetch(`*[_type == 'notes']`).then((data) => {
+      setNotes(data);
+      console.log(data);
     });
   }, []);
   const handleOnClick = (article) => {
@@ -51,17 +44,22 @@ const Notes = () => {
                     data-bs-parent="#accordionExample"
                   >
                     <div className="accordion-body">
-                      {eval(`${item.toLowerCase()}`).map((item) => {
-                        return (
-                          <Link
-                            className="d-block mylink"
-                            key={item._id}
-                            onClick={() => handleOnClick(item)}
-                          >
-                            {item.title}
-                          </Link>
-                        );
-                      })}
+                      {notes
+                        .filter(
+                          (note) =>
+                            note.label.toLowerCase() === item.toLowerCase()
+                        )
+                        .map((item) => {
+                          return (
+                            <Link
+                              key={item._id}
+                              className="mylink"
+                              onClick={() => handleOnClick(item)}
+                            >
+                              {item.title}
+                            </Link>
+                          );
+                        })}
                     </div>
                   </div>
                 </div>
@@ -69,7 +67,7 @@ const Notes = () => {
             })}
           </div>
         </div>
-        <div className="col my-5">
+        <div className="col mt-1 mb-5">
           <h1 className="mb-5">{content.title}</h1>
           <p className="time">
             {content._createdAt && "CreatedAt: "}
